@@ -1,14 +1,16 @@
 package com.diego.appvistacurso.model;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 public class Pessoa {
-    //
     private String primeiroNome;
     private String sobreNome;
     private String nomeCurso;
     private String telefoneContato;
     public Pessoa() {
     }
-
     public String getPrimeiroNome() {
         return primeiroNome;
     }
@@ -40,4 +42,18 @@ public class Pessoa {
     public void setTelefoneContato(String telefoneContato) {
         this.telefoneContato = telefoneContato;
     }
+
+
+    //Criado metodo toString
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "Nome='" + primeiroNome + '\'' +
+                ", Sobrenome='" + sobreNome + '\'' +
+                ", Curso='" + nomeCurso + '\'' +
+                ", Telefone='" + telefoneContato + '\'' +
+                '}';
+    }
+
+
 }
