@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    tools:context=".view.MainActivity">
+    tools:context=".view.MainActivity"
+    tools:layout_editor_absoluteX="-136dp"
+    tools:layout_editor_absoluteY="-3dp">
+
 
     <TextView
         android:id="@+id/txt_titulo"
@@ -16,95 +19,109 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.02" />
 
     <EditText
         android:id="@+id/edit_primeiro_nome"
-        android:layout_width="370dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_primeiro_nome"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_titulo"
         app:layout_marginBaseline="16dp" />
 
     <EditText
         android:id="@+id/edit_telefone_contato"
-        android:layout_width="370dp"
-        android:layout_height="71dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_telefone_de_contato"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_curso_desejado"
-        app:layout_constraintVertical_bias="0.014"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_marginBaseline="16dp" />
 
     <EditText
         android:id="@+id/edit_curso_desejado"
-        android:layout_width="370dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_nome_do_curso_desejado"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_sobrenome"
         app:layout_marginBaseline="16dp" />
 
     <EditText
         android:id="@+id/edit_sobrenome"
-        android:layout_width="370dp"
-        android:layout_height="71dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_sobrenome"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_primeiro_nome"
         app:layout_marginBaseline="16dp" />
 
     <Button
-        android:id="@+id/btn_limpar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="60dp"
-        android:onClick="limpar"
-        android:text="@string/txt_button_limpar"
-        app:layout_constraintBottom_toTopOf="@+id/btn_finalizar"
-        app:layout_constraintEnd_toStartOf="@+id/btn_salvar"
-        app:layout_constraintHorizontal_bias="0.38"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/btn_finalizar"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#2196F3"
+        android:text="@string/txt_button_finalizar"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_telefone_contato"
+        app:layout_constraintVertical_bias="0.201" />
 
     <Button
         android:id="@+id/btn_salvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#2196F3"
         android:text="@string/txt_button_salvar"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_finalizar"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btn_finalizar"
-        android:layout_width="match_parent"
+        android:id="@+id/btn_limpar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txt_button_finalizar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_telefone_contato"
-        tools:layout_editor_absoluteX="-4dp" />
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#2196F3"
+        android:text="@string/txt_button_limpar"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_finalizar"
+        app:layout_constraintEnd_toStartOf="@+id/btn_salvar"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
