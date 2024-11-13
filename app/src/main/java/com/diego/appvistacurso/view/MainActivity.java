@@ -9,21 +9,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.diego.appvistacurso.R;
+import com.diego.appvistacurso.controller.PessoaController;
 import com.diego.appvistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+    PessoaController controller;
     Pessoa pessoa;
-    Pessoa outraPessoa;
-
-    String priPessoa;
-    String segPessoa;
 
     EditText edit_primeiro_nome;
     EditText edit_sobrenome;
     EditText edit_curso_desejado;
     EditText edit_telefone_contato;
-
     Button btn_limpar;
     Button btn_finalizar;
     Button btn_salvar;
@@ -35,15 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
         pessoa = new Pessoa();
 
+        controller = new PessoaController();
+        controller.toString();
+
         pessoa.setPrimeiroNome("Diego");
         pessoa.setSobreNome("Augusto Araujo Moura");
         pessoa.setNomeCurso("Desenvolvimento de Sistemas");
         pessoa.setTelefoneContato("34-99157-9741");
-
-        outraPessoa.setPrimeiroNome("Tiago");
-        outraPessoa.setSobreNome("Henrique de Araujo Moura");
-        outraPessoa.setNomeCurso("Educação Fisica");
-        outraPessoa.setTelefoneContato("34-99157-9637");
 
         edit_primeiro_nome = findViewById(R.id.edit_primeiro_nome);
         edit_sobrenome = findViewById(R.id.edit_sobrenome);
@@ -84,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setSobreNome(edit_sobrenome.getText().toString());
                 pessoa.setNomeCurso(edit_curso_desejado.getText().toString());
                 pessoa.setTelefoneContato(edit_telefone_contato.getText().toString());
+
+                controller.salvar(pessoa);
 
                 Toast.makeText(MainActivity.this, "Dados Salvos" + pessoa.toString(), Toast.LENGTH_SHORT).show();
             }
