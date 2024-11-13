@@ -2,6 +2,7 @@ package com.diego.appvistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,9 @@ import com.diego.appvistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences preferences;
+
+    public static final String NONE_PREFERENCES = "pref listvip";
     PessoaController controller;
     Pessoa pessoa;
 
@@ -29,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences = getSharedPreferences(NONE_PREFERENCES, 0);
+        SharedPreferences.Editor listaVip = preferences.edit();
 
         pessoa = new Pessoa();
 
@@ -79,6 +86,13 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setSobreNome(edit_sobrenome.getText().toString());
                 pessoa.setNomeCurso(edit_curso_desejado.getText().toString());
                 pessoa.setTelefoneContato(edit_telefone_contato.getText().toString());
+
+                listaVip.putString("Primeiro Nome: ", pessoa.getPrimeiroNome());
+                listaVip.putString("Sobrenome: ", pessoa.getSobreNome());
+                listaVip.putString("Curso: ", pessoa.getNomeCurso());
+                listaVip.putString("Telefone: ", pessoa.getTelefoneContato());
+
+                listaVip.apply();
 
                 controller.salvar(pessoa);
 
