@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String NONE_PREFERENCES = "pref listvip";
     PessoaController controller;
     Pessoa pessoa;
-
     EditText edit_primeiro_nome;
     EditText edit_sobrenome;
     EditText edit_curso_desejado;
@@ -38,14 +37,13 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor listaVip = preferences.edit();
 
         pessoa = new Pessoa();
-
         controller = new PessoaController();
         controller.toString();
 
-        pessoa.setPrimeiroNome("Diego");
-        pessoa.setSobreNome("Augusto Araujo Moura");
-        pessoa.setNomeCurso("Desenvolvimento de Sistemas");
-        pessoa.setTelefoneContato("34-99157-9741");
+        pessoa.setPrimeiroNome(preferences.getString("Primeiro Nome: ",""));
+        pessoa.setSobreNome(preferences.getString("Sobrenome: ",""));
+        pessoa.setNomeCurso(preferences.getString("Curso: ",""));
+        pessoa.setTelefoneContato(preferences.getString("Telefone: ",""));
 
         edit_primeiro_nome = findViewById(R.id.edit_primeiro_nome);
         edit_sobrenome = findViewById(R.id.edit_sobrenome);
