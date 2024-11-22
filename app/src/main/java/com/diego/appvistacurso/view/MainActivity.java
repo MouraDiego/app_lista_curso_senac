@@ -13,6 +13,9 @@ import com.diego.appvistacurso.R;
 import com.diego.appvistacurso.controller.PessoaController;
 import com.diego.appvistacurso.model.Pessoa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
@@ -34,16 +37,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         preferences = getSharedPreferences(NONE_PREFERENCES, 0);
-        SharedPreferences.Editor listaVip = preferences.edit();
+        SharedPreferences.Editor listaVip;
 
         pessoa = new Pessoa();
         controller = new PessoaController();
-        controller.toString();
+        listaVip = preferences.edit();
+        controller.iniciarPessoas(preferences, pessoa);
 
-        pessoa.setPrimeiroNome(preferences.getString("Primeiro Nome: ",""));
-        pessoa.setSobreNome(preferences.getString("Sobrenome: ",""));
-        pessoa.setNomeCurso(preferences.getString("Curso: ",""));
-        pessoa.setTelefoneContato(preferences.getString("Telefone: ",""));
+        controller.toString();
 
         edit_primeiro_nome = findViewById(R.id.edit_primeiro_nome);
         edit_sobrenome = findViewById(R.id.edit_sobrenome);
@@ -55,48 +56,17 @@ public class MainActivity extends AppCompatActivity {
         edit_curso_desejado.setText(pessoa.getNomeCurso());
         edit_telefone_contato.setText(pessoa.getTelefoneContato());
 
+        List<EditText> editTexts = new ArrayList<>();
+        editTexts.add(edit_primeiro_nome);
+        editTexts.add(edit_sobrenome);
+        editTexts.add(edit_curso_desejado);
+        editTexts.add(edit_telefone_contato);
+
+        controller.botoes(this, editTexts, listaVip, pessoa);
+
         btn_limpar = findViewById(R.id.btn_limpar);
         btn_finalizar = findViewById(R.id.btn_finalizar);
         btn_salvar = findViewById(R.id.btn_salvar);
-
-        btn_limpar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                edit_primeiro_nome.setText(" ");
-                edit_sobrenome.setText(" ");
-                edit_curso_desejado.setText(" ");
-                edit_telefone_contato.setText(" ");
-            }
-        });
-
-        btn_finalizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Volte Sempre", Toast.LENGTH_LONG).show();
-                finish();
-            }
-        });
-
-        btn_salvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pessoa.setPrimeiroNome(edit_primeiro_nome.getText().toString());
-                pessoa.setSobreNome(edit_sobrenome.getText().toString());
-                pessoa.setNomeCurso(edit_curso_desejado.getText().toString());
-                pessoa.setTelefoneContato(edit_telefone_contato.getText().toString());
-
-                listaVip.putString("Primeiro Nome: ", pessoa.getPrimeiroNome());
-                listaVip.putString("Sobrenome: ", pessoa.getSobreNome());
-                listaVip.putString("Curso: ", pessoa.getNomeCurso());
-                listaVip.putString("Telefone: ", pessoa.getTelefoneContato());
-
-                listaVip.apply();
-
-                controller.salvar(pessoa);
-
-                Toast.makeText(MainActivity.this, "Dados Salvos" + pessoa.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
